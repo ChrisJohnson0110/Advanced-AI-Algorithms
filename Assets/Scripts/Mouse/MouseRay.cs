@@ -21,7 +21,9 @@ public class MouseRay : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        LayerMask layerMask = 3 << LayerMask.NameToLayer("Walkable");
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100, layerMask))
         {
             if (hit.transform.gameObject.tag == "Damageable") //if can attack
             {

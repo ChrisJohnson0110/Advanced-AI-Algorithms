@@ -9,14 +9,16 @@ public class AutoAttackRanged : MonoBehaviour
 {
     //ranged variables
     [SerializeField] int fNumberOfProjectilesToCreate; //number of projects to create
-    GameObject a_goAutoAttackProjectile; //object that will be fired
+    [SerializeField] GameObject a_goAutoAttackProjectile; //object that will be fired
     GameObject[] goProjectilesToLaunch; //store projectiles that will be used
-    Player PlayerReference;
+
+    [SerializeField] float fProjectileSpeed;
+    [SerializeField] float fProjectileDamage;
+
+
 
     void Start()
     {
-        PlayerReference = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        a_goAutoAttackProjectile = PlayerReference.EquippedWeapon.ProjectileModel;
         CreateProjectiles();
     }
 
@@ -47,7 +49,7 @@ public class AutoAttackRanged : MonoBehaviour
     /// <summary>
     /// set the first found inactive bullet and set it to active
     /// </summary>
-    public void AutoAttack(Transform a_tTransform, Vector3 a_TargetPosition, WeaponSO a_EquippedWeapon)
+    public void AutoAttack(Transform a_tTransform, Vector3 a_TargetPosition)
     {
         foreach (GameObject projectileToLaunch in goProjectilesToLaunch)
         {
@@ -56,10 +58,14 @@ public class AutoAttackRanged : MonoBehaviour
                 projectileToLaunch.transform.position = a_tTransform.position;
 
                 Projectile properties = projectileToLaunch.GetComponent<Projectile>();
-                properties.fProjectileSpeed = a_EquippedWeapon.BaseProjectileSpeed;
-                properties.fProjectileDamage = a_EquippedWeapon.BaseProjectileDamage;
-                properties.DamageType = a_EquippedWeapon.DamageType;
+                properties.fProjectileSpeed = fProjectileSpeed;
+                properties.fProjectileDamage = fProjectileDamage;
                 properties.TargetPosition = a_TargetPosition;
+
+
+
+
+
 
                 projectileToLaunch.SetActive(true);
 
