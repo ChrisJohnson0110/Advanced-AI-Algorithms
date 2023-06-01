@@ -17,8 +17,6 @@ public class IdleState : State
     bool isTimerActive = false;
     float fTimer;
 
-    
-
     public override State RunCurrentState()
     {
         if (SensesRef.bCanSee == true | SensesRef.bCanHear == true)

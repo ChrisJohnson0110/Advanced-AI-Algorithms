@@ -9,7 +9,7 @@ public class Exit : MonoBehaviour
     /// </summary>
     public void ExitApp()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
