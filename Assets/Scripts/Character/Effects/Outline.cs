@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// script to add and remove outlines from objects
+/// </summary>
 public class Outline : MonoBehaviour
 {
 
@@ -13,19 +16,10 @@ public class Outline : MonoBehaviour
     Material[] RendererMaterials; //objects materials
     Material[] MaterialsWithOutline; //list of new materials
 
-
-    
-
     // Start is called before the first frame update
     void Start()
     {
         OutlineMaterial = Resources.Load<Material>("OutlineMaterial");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void GetMaterials(GameObject a_goObjectToHighlight)

@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// handle attack behaviour
+/// </summary>
 public class AttackState : State
 {
-    [SerializeField] State idleState;
-    [SerializeField] Health hThisHealth;
+    [SerializeField] State idleState; //idle state ref
 
-    [SerializeField] Senses sensesRef;
+    [SerializeField] Senses sensesRef; //this characters senses
 
-    [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject hitEffect; //effect of dealing dmg
+    [SerializeField] float AttackInverval; //time between attacks
+    [SerializeField] float fDamage; //dmg attacks will deal
 
-    [SerializeField] float AttackInverval;
-
-    [SerializeField] float fDamage;
     float fTimer = 0;
 
     public override State RunCurrentState()

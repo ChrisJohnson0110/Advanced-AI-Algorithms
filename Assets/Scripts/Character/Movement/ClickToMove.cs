@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// player movement functions
+/// </summary>
 public class ClickToMove : MonoBehaviour
 {
     NavMeshAgent navAgent;

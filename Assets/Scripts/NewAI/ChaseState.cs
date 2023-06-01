@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// chase state behaviour
+/// </summary>
 public class ChaseState : State
 {
     [SerializeField] GameObject goCharacterRef; //this character ref
 
-    [SerializeField] AttackState attackState;
-    [SerializeField] IdleState idleState;
-    public bool isInAttackRange;
+    [SerializeField] AttackState attackState; //attack state ref
+    [SerializeField] IdleState idleState; //idle state ref
+    public bool isInAttackRange; //is the player in range to attack
 
 
     [SerializeField] Senses SensesRef;
@@ -24,14 +27,14 @@ public class ChaseState : State
         }
         else
         {
-
-            //move towards target
             if (SensesRef.bCanSee == true | SensesRef.bCanHear == true)
             {
+                //if can see or hear chase
                 goCharacterRef.GetComponent<NavMeshAgent>().SetDestination(SensesRef.target.transform.position);
             }
             else
             {
+                //no target
                 return idleState;
             }
 

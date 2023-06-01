@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// handle hearing check for the character
+/// </summary>
 public class Ears : MonoBehaviour
 {
     [SerializeField] Transform goCharacter;

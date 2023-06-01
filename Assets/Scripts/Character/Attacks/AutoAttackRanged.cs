@@ -57,23 +57,18 @@ public class AutoAttackRanged : MonoBehaviour
             {
                 projectileToLaunch.transform.position = a_tTransform.position;
 
+                //set projectile properties
                 Projectile properties = projectileToLaunch.GetComponent<Projectile>();
                 properties.fProjectileSpeed = fProjectileSpeed;
                 properties.fProjectileDamage = fProjectileDamage;
                 properties.TargetPosition = a_TargetPosition;
 
 
-
-
-
-
                 projectileToLaunch.SetActive(true);
 
                 break;
-                //return projectileToLaunch;
             }
         }
-        //return null;
     }
 
 }

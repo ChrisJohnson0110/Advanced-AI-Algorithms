@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// quick movement in direction
+/// </summary>
 public class Dash : MonoBehaviour
 {
     NavMeshAgent navAgent;
@@ -40,18 +43,19 @@ public class Dash : MonoBehaviour
     {
         isDashing = true;
 
-        float fOriginalSpeed = navAgent.speed;
-        navAgent.speed = fDashSpeed;
+        float fOriginalSpeed = navAgent.speed; //save normal speed
+        navAgent.speed = fDashSpeed; //change to dash speed
 
         float fElapsedTime = 0f;
+        //dash
         while (fElapsedTime < fDashDuration)
         {
-            navAgent.speed = Mathf.Lerp(fDashSpeed, fOriginalSpeed, fElapsedTime / fDashDuration);
+            navAgent.speed = Mathf.Lerp(fDashSpeed, fOriginalSpeed, fElapsedTime / fDashDuration); 
             fElapsedTime += Time.deltaTime;
             yield return null;
         }
-        navAgent.speed = fOriginalSpeed;
-        isDashing = false;
+        navAgent.speed = fOriginalSpeed; //reset speed
+        isDashing = false; //dash over
     }
 
 

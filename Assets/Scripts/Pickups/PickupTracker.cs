@@ -13,6 +13,9 @@ public class PickupTracker : MonoBehaviour
         goPickupsFoundUIRef.SetActive(false);
     }
 
+    /// <summary>
+    /// increase pickup count and check for all found
+    /// </summary>
     public void ObjectPickedup()
     {
         totalPickups++;

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// handle raycast on click
+/// </summary>
 public class MouseRay : MonoBehaviour
 {
     ClickToMove ClickToMoveRef;

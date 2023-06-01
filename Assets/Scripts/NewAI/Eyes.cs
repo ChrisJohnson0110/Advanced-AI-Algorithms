@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// handle eye checks for the character
+/// </summary>
 public class Eyes : MonoBehaviour
 {
 
     [SerializeField] Transform goCharacter;
 
-    [SerializeField] Senses SensesRef;
+    [SerializeField] Senses SensesRef; //senses ref
 
     [SerializeField] string sTagToCheck;
+    [SerializeField] float fVisionAngle; //angle of sight
 
-    [SerializeField] float fVisionAngle;
-
+    //detection
     [SerializeField] GameObject goDetectionBar; //detection bar indicator
     [SerializeField] Vector3 v3DetectionBarScale; //scale of bar
     float fDetectionProgress = 0; //progress detecting player
     [SerializeField] float fDetectionTime = 1f; //how long to detect
 
+    //agro
     [SerializeField] float fLoseAgroDuration;
     bool bIsTimerActive = false;
 
@@ -70,13 +74,16 @@ public class Eyes : MonoBehaviour
 
     private IEnumerator AgroTimer()
     {
+        //if not already running
         if (bIsTimerActive == true)
         {
             yield break;
         }
         bIsTimerActive = true;
 
-        yield return new WaitForSeconds(fLoseAgroDuration);
+        yield return new WaitForSeconds(fLoseAgroDuration); //wait for agro lose duration
+
+        //lose agro
         SensesRef.bCanSee = false;
         fDetectionProgress = 0;
     }

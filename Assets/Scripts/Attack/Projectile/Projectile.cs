@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// script to attach to bullets to move them and deactive if they travel too far
+/// </summary>
 public class Projectile : MonoBehaviour
 {
     public float fProjectileSpeed;
@@ -13,20 +16,20 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        v3BulletDirection = TargetPosition - transform.position;
+        v3BulletDirection = TargetPosition - transform.position; //get travel dir
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(v3BulletDirection * fProjectileSpeed * Time.deltaTime);
-        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+        transform.Translate(v3BulletDirection * fProjectileSpeed * Time.deltaTime); //move bullet
+        transform.position = new Vector3(transform.position.x, 1, transform.position.z); //remove height movement
 
 
-        float distance = Vector3.Distance(transform.position, new Vector3(0,0,0));
+        float distance = Vector3.Distance(transform.position, new Vector3(0,0,0)); //get distance from centre
 
-        if (distance >= 50)
+        if (distance >= 50) //if too far away set inactive
         {
             gameObject.SetActive(false);
         }
