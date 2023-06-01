@@ -5,38 +5,28 @@ using UnityEngine;
 public class AttackState : State
 {
     [SerializeField] State idleState;
-    [SerializeField] State fleeState;
     [SerializeField] Health hThisHealth;
 
     [SerializeField] Senses sensesRef;
 
+    [SerializeField] GameObject hitEffect;
+
     [SerializeField] float AttackInverval;
 
     [SerializeField] float fDamage;
-    float timer;
+    float fTimer = 0;
 
     public override State RunCurrentState()
     {
-        //play attack effect
-        //damage player
-        Debug.Log("Attack");
-        if (timer <= 0)
+        if (fTimer >= 0)
         {
-            sensesRef.target.GetComponent<Health>().TakeDamage(fDamage);
-            Debug.Log(fDamage.ToString());
-            timer = AttackInverval;
+            fTimer -= Time.deltaTime; //hit cooldown
         }
         else
         {
-            if (timer >= 0)
-            {
-                timer -= Time.deltaTime;
-            }
-        }
-
-        if (hThisHealth.health <= (hThisHealth.health / 10)) //hp drop below 10%
-        {
-            return fleeState;
+            sensesRef.target.GetComponent<Health>().TakeDamage(fDamage); //deal damage
+            Instantiate(hitEffect, sensesRef.target.transform.position, transform.rotation); //create hit effect
+            fTimer = AttackInverval; //reset hit timer
         }
 
         return idleState;

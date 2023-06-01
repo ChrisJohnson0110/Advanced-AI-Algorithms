@@ -26,7 +26,7 @@ public class ChaseState : State
         {
 
             //move towards target
-            if (SensesRef.target != null)
+            if (SensesRef.bCanSee == true | SensesRef.bCanHear == true)
             {
                 goCharacterRef.GetComponent<NavMeshAgent>().SetDestination(SensesRef.target.transform.position);
             }

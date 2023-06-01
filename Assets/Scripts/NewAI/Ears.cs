@@ -35,7 +35,6 @@ public class Ears : MonoBehaviour
                 {
                     //set cannot hear
                     SensesRef.bCanHear = false;
-                    SensesRef.target = null;
                 }
             }
         }
